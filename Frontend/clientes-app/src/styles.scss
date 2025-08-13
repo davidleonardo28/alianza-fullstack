@@ -1,0 +1,64 @@
+:root {
+  --brand: #004481;
+  --brand-2: #00A0DF;
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --border: #e6e8ee;
+  --text: #1b1f23;
+  //--text-2: #5b6b7d;
+  --ali-primary: #0a77b7;
+  --ali-primary-700: #095e91;
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.mat-mdc-raised-button.mat-primary,
+.mdc-button--raised.mat-primary {
+  --mdc-filled-button-container-color: var(--brand);
+}
+
+.mat-mdc-outlined-button.mat-mdc-button-base {
+  --mdc-outlined-button-outline-color: var(--brand);
+  color: var(--brand);
+}
+
+.mat-mdc-stroked-button:not(.mat-primary) {
+  color: var(--brand);
+}
+
+.mdc-text-field--outlined {
+  --mdc-outlined-text-field-outline-color: #c7cdd8;
+  --mdc-outlined-text-field-hover-outline-color: var(--brand);
+  --mdc-outlined-text-field-focus-outline-color: var(--brand);
+}
+
+/* Fondo más claro para el overlay del diálogo */
+.light-backdrop {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Caja del diálogo */
+.adv-dialog .mat-mdc-dialog-container .mdc-dialog__surface {
+  background: #fff;
+  color: #222 !important;
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Inputs más legibles */
+.adv-dialog .mdc-text-field__input {
+  color: #222 !important;
+  caret-color: #222 !important;
+}

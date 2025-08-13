@@ -1,0 +1,96 @@
+
+:root {
+  --ali-primary: #0a77b7;
+  --ali-primary-700: #095e91;
+}
+
+.light-card {
+  background: #ffffff;
+  border: 1px solid #e6edf3;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(10, 119, 183, .08);
+}
+
+.title {
+  margin: 0 0 18px;
+  font-weight: 700;
+  color: #1b2a3a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.full {
+  grid-column: span 1;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: span 1;
+  }
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input{
+  color: #333 !important;
+}
+
+.mat-mdc-form-field.mat-mdc-form-field-appearance-outline .mdc-notched-outline__leading,
+.mat-mdc-form-field.mat-mdc-form-field-appearance-outline .mdc-notched-outline__notch,
+.mat-mdc-form-field.mat-mdc-form-field-appearance-outline .mdc-notched-outline__trailing {
+  border-color: #cfd7df;
+  color: #333 !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--ali-primary);
+  color: #333 !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-floating-label {
+  color: var(--ali-primary);
+  color: #333 !important;
+}
+
+.actions {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  display: flex;
+  gap: 12px;
+}
+
+button[mat-raised-button] {
+  background: var(--ali-primary);
+  color: #fff;
+}
+
+button[mat-raised-button]:hover {
+  background: var(--ali-primary-700);
+}
+
+a[mat-button] {
+  color: var(--ali-primary);
+}
+
+::ng-deep .mat-mdc-text-field-wrapper input {
+  color: #000 !important;
+
+}
+
+::ng-deep .mat-mdc-text-field-wrapper .mat-mdc-floating-label {
+  color: #000 !important;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper input::placeholder {
+  color: rgba(0, 0, 0, 0.6) !important;
+
+}

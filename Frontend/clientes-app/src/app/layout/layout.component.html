@@ -1,0 +1,19 @@
+<mat-sidenav-container class="h-screen">
+  <mat-sidenav mode="side" opened>
+    <h3 class="px-4 py-3">Alianza</h3>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/clientes">Clientes</a>
+      <a mat-list-item disabled>Reportes</a>
+      <a mat-list-item disabled>Seguridad</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>Administración</span>
+    </mat-toolbar>
+    <div class="p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

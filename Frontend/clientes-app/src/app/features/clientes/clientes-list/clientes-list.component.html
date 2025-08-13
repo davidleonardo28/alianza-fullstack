@@ -1,0 +1,74 @@
+<div class="toolbar">
+  <div class="left">
+    <button class="btn-blue" [routerLink]="['/clientes/nuevo']">
+      <span class="mi"></span>New
+    </button>
+
+    <button class="btn-blue" (click)="onExport()">
+      <span class="mi"></span>Export
+    </button>
+  </div>
+
+  <div class="right">
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Enter shared key"
+        [formControl]="searchCtrl"
+        [class.is-invalid]="searchCtrl.touched && searchCtrl.invalid"
+        (keyup.enter)="onSearch()"
+      />
+    </div>
+
+    <button class="btn-search" (click)="onSearch()">Search</button>
+
+    <button class="btn-blue" (click)="openAdvancedSearch()">
+      Advanced Search
+    </button>
+  </div>
+</div>
+
+<div class="table-card">
+  <table mat-table [dataSource]="dataSource" class="tabla mat-elevation-z1">
+    <ng-container matColumnDef="sharedKey">
+      <th mat-header-cell *matHeaderCellDef>Shared Key</th>
+      <td mat-cell *matCellDef="let c">{{ c.sharedKey }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="businessId">
+      <th mat-header-cell *matHeaderCellDef>Business ID</th>
+      <td mat-cell *matCellDef="let c">{{ c.businessId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let c">{{ c.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <td mat-cell *matCellDef="let c">{{ c.phone }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef>Date Added</th>
+      <td mat-cell *matCellDef="let c">
+        {{ c.createdAt | date : "dd/MM/yyyy" }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="thead"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="trow"
+    ></tr>
+  </table>
+
+  <mat-paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25]"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+</div>

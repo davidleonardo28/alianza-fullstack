@@ -1,0 +1,33 @@
+<h2 class="adv-title">Advanced Search</h2>
+
+<form [formGroup]="form" class="adv-grid">
+  <mat-form-field appearance="outline">
+    <mat-label>sharedKey contains</mat-label>
+    <input matInput formControlName="sharedKey" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>email contains</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>businessId equals</mat-label>
+    <input matInput formControlName="businessId" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>created from (YYYY-MM-DD)</mat-label>
+    <input matInput formControlName="createdFrom" placeholder="YYYY-MM-DD" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>created to (YYYY-MM-DD)</mat-label>
+    <input matInput formControlName="createdTo" placeholder="YYYY-MM-DD" />
+  </mat-form-field>
+</form>
+
+<div class="adv-actions">
+  <button mat-button (click)="close()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="buscar()">Buscar</button>
+</div>

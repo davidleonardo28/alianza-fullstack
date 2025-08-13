@@ -1,0 +1,40 @@
+<mat-card class="card-form light-card">
+  <h2 class="title">Nuevo cliente</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="grid">
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>sharedKey*</mat-label>
+      <input matInput formControlName="sharedKey" />
+      <mat-error *ngIf="f.sharedKey.hasError('required')">Requerido</mat-error>
+      <mat-error *ngIf="f.sharedKey.hasError('minlength')"
+        >Mínimo 2 caracteres</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>businessId*</mat-label>
+      <input matInput formControlName="businessId" />
+      <mat-error *ngIf="f.businessId.hasError('required')">Requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>email</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="f.email.hasError('pattern')">Email inválido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>phone*</mat-label>
+      <input matInput formControlName="phone" />
+      <mat-error *ngIf="f.phone.hasError('required')">Requerido</mat-error>
+      <mat-error *ngIf="f.phone.hasError('pattern')"
+        >Solo dígitos (7–15)</mat-error
+      >
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+      <a mat-button routerLink="/clientes">Cancelar</a>
+    </div>
+  </form>
+</mat-card>

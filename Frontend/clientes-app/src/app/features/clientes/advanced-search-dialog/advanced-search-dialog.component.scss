@@ -1,0 +1,44 @@
+
+:host {
+  display: block;
+}
+
+.adv-title {
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: #083d6b;
+}
+
+.adv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.adv-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+
+::ng-deep .adv-dialog-panel .mdc-dialog__surface {
+  background: #ffffff;
+  border: 1px solid #e5e9ef;
+  border-radius: 14px;
+  padding: 16px 16px 10px;
+  box-shadow:
+    0 6px 18px rgba(8, 61, 107, 0.12),
+    0 1px 3px rgba(8, 61, 107, 0.08);
+}
+
+::ng-deep .cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.32);
+}
+
+@media (max-width: 720px) {
+  .adv-grid {
+    grid-template-columns: 1fr;
+  }
+}
