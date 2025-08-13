@@ -1,6 +1,8 @@
-# Alianza - Prueba Full Stack (Clientes)
+# Alianza - Prueba Técnica Full Stack (Clientes)
 
-Monorepo con **backend** (Java Spring Boot) y **frontend** (Angular).
+**Realizado por David Barrera Lopez**
+
+Repo con **backend** (Java 21 Spring Boot) y **frontend** (Angular 19).
 
 ## Estructura
 
@@ -16,10 +18,26 @@ Monorepo con **backend** (Java Spring Boot) y **frontend** (Angular).
 
 ## Servicios disponibles (Backend)
 
-Base URL por defecto: `http://localhost:8080/api/clientes`
+# Base URL por defecto: `http://localhost:8080/api/clientes`
+
+# Swagger UI: http://localhost:8080/swagger-ui.html
+
+# Actuator: http://localhost:8080/actuator/health
 
 cd backend
 mvn spring-boot:run
+
+Configuración destacada
+
+Seeds de ejemplo al iniciar (via @PostConstruct/CommandLineRunner).
+
+Logs (Logback + encoder JSON opcional).
+
+CORS abierto para http://localhost:4200 (Angular).
+
+OpenAPI/Swagger ya incluido.
+
+# EndPoints
 
 | Método | Endpoint                                 | Descripción                               |
 | ------ | ---------------------------------------- | ----------------------------------------- |
@@ -77,4 +95,47 @@ http://localhost:8080/swagger-ui.html
 cd frontend
 npm install
 ng serve -o  # http://localhost:4200
+```
+
+```bash
+Frontend – Pantallas
+
+Clientes (listado)
+Toolbar con: New, Export, Enter shared key + Search, Advanced Search.
+Tabla responsive (Material) con columnas: Shared Key, Business ID, E-mail, Phone, Date Added.
+Paginación Material.
+Búsqueda simple: si el input está vacío y presionas Search, se recarga la lista completa. Si tiene ≥2 caracteres, llama GET /clientes/search.
+Export: descarga un .csv usando GET /clientes/export.
+
+Nuevo Cliente
+Form reactivo con validaciones:
+sharedKey (required, min 2)
+businessId (required)
+email (email)
+phone (required, min 7 dígitos)
+Estilos alineados con el mock: botones azul/teal y campos con outline.
+Mensajes de error claros (“Email inválido”, “Solo dígitos (7–15)”, etc.).
+Al guardar: POST /clientes, toast de éxito y vuelta al listado.
+Al cancelar: vuelve al listado
+
+
+# Búsqueda avanzada (dialogo)
+-> Campos: sharedKey contains, email contains, businessId equals, created from/to (YYYY-MM-DD).
+-> Normaliza fechas a YYYY-MM-DD.
+-> Envía solo los filtros con valor (se omiten los vacíos).
+-> Integra con POST /clientes/advanced-search.
+-> Botón Cancelar cierra sin aplicar.
+
+```
+
+```bash
+Cómo probar (rápido)
+
+-> Levanta backend (8080) y frontend (4200).
+-> Abre http://localhost:4200/clientes.
+-> Verás los seeds precargados.
+-> Escribe Sebas en Enter shared key → Search: se filtra “Sebastian Novoa”.
+-> Clic en Advanced Search → llena solo email contains con @Alianza.com → Buscar: verás solo correos de ese dominio.
+-> New → crea un cliente; verifica que aparezca en la tabla.
+-> Export → descarga CSV.
 ```

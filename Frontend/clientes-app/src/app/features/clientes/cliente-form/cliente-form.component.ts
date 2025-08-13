@@ -33,7 +33,7 @@ export class ClienteFormComponent {
   private api = inject(ClientesService);
   private router = inject(Router);
 
-  form = this.fb.group({
+  form = this.fb.nonNullable.group({
     sharedKey: ['', [Validators.required, Validators.minLength(2)]],
     businessId: ['', [Validators.required]],
     email: ['', [Validators.pattern(EMAIL_REGEX)]],
