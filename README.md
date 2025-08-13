@@ -22,7 +22,6 @@ Repo con **backend** (Java 21 Spring Boot) y **frontend** (Angular 19).
 
 # Swagger UI: http://localhost:8080/swagger-ui.html
 
-# Actuator: http://localhost:8080/actuator/health
 
 cd backend
 mvn spring-boot:run
