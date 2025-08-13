@@ -24,4 +24,15 @@ mvn spring-boot:run
 # Swagger UI: http://localhost:8080/swagger-ui.html
 # Health:      http://localhost:8080/actuator/health
 ```
-"# alianza-fullstack" 
+
+```bash
+cd frontend
+npm install
+ng serve -o  # http://localhost:4200
+```
+
+```bash
+Tests
+Backend: cd backend && mvn test
+Frontend: cd frontend && npm test
+```
