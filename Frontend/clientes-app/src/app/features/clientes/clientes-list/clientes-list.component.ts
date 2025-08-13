@@ -174,20 +174,27 @@ export class ClientesListComponent {
         backdropClass: 'light-backdrop',
       })
       .afterClosed()
-      .subscribe((f) => {
-        if (!f) return;
+      .subscribe((payload) => {
+        if (!payload) return;
 
-        const payload: any = {};
-        if (f.sharedKey?.trim()) {
-          payload.sharedKey = f.sharedKey.trim();
-        } else if (f.email?.trim()) {
-          payload.email = f.email.trim();
-        } else if (f.businessId?.trim()) {
-          payload.businessId = f.businessId.trim();
-        } else if (f.createdFrom?.trim() || f.createdTo?.trim()) {
-          payload.createdFrom = f.createdFrom?.trim() || '';
-          payload.createdTo = f.createdTo?.trim() || '';
-        } else {
+        const keys = Object.keys(payload);
+
+        const textKeys = keys.filter((k) =>
+          ['sharedKeyContains', 'emailContains', 'businessIdEquals'].includes(k)
+        );
+        const dateKeys = keys.filter((k) =>
+          ['createdFrom', 'createdTo'].includes(k)
+        );
+
+        const soloTexto = textKeys.length === 1 && dateKeys.length === 0;
+        const soloRango = textKeys.length === 0 && dateKeys.length >= 1;
+
+        if (!soloTexto && !soloRango) {
+          this.snack.open(
+            'Usa solo un criterio (o únicamente el rango de fechas).',
+            'Cerrar',
+            { duration: 3000 }
+          );
           return;
         }
 

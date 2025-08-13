@@ -36,36 +36,26 @@ export class AdvancedSearchDialogComponent {
   buscar() {
     const v = this.form.value;
 
-    const hasValues = Object.values(v).some(
-      (x) => (x ?? '').toString().trim() !== ''
-    );
-    if (!hasValues) {
-      this.ref.close();
-      return;
-    }
-
     const normalize = (d: any) =>
       d instanceof Date
         ? d.toISOString().slice(0, 10)
         : (d ?? '').toString().trim();
 
-    const payload: any = {
-      sharedKey: (v.sharedKey ?? '').trim(),
-      email: (v.email ?? '').trim(),
-      businessId: (v.businessId ?? '').trim(),
-      createdFrom: normalize(v.createdFrom),
-      createdTo: normalize(v.createdTo),
-    };
+    const p: any = {};
+    if ((v.sharedKey ?? '').trim()) p.sharedKeyContains = v.sharedKey!.trim();
+    if ((v.email ?? '').trim()) p.emailContains = v.email!.trim();
+    if ((v.businessId ?? '').trim()) p.businessIdEquals = v.businessId!.trim();
 
-    Object.keys(payload).forEach((k) => {
-      const val = payload[k];
-      if (val === '' || val === null || val === undefined) {
-        delete payload[k];
-      }
-    });
+    const from = normalize(v.createdFrom);
+    const to = normalize(v.createdTo);
+    if (from) p.createdFrom = from;
+    if (to) p.createdTo = to;
 
-    console.log('[ADVANCED SEARCH] payload', payload);
+    if (Object.keys(p).length === 0) {
+      this.ref.close();
+      return;
+    }
 
-    this.ref.close(payload);
+    this.ref.close(p);
   }
 }
